@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
 <body>
+<h1>Tic Tac Toe</h1>
 
-<h1>Welcome</h1>
+<canvas id="draw" width="300" height="300" onmousedown="xy(event)">
+</canvas>
 
-<p>My first paragraph.</p>
+<script>
+var g = document.getElementById("draw").getContext("2d");
+g.fillRect(0,0,100,100);
+g.fillRect(200,0,100,100);
+g.fillRect(100,100,100,100);
+g.fillRect(0,200,100,100);
+g.fillRect(200,200,100,100);
 
+var p = "O";
+
+function xy(event){ 
+g.fillStyle="red";
+g.font="80px Arial";
+g.fillText(p,event.clientX-35 ,event.clientY-55);
+
+if (p=="O") { p="X";}
+else        { p="O";}
+}
+</script>
+
+<p>By Enio Fernandes</p>
 </body>
 </html>
