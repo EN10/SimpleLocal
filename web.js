@@ -1,13 +1,16 @@
-// web.js
-var express = require("express");
-var app = express();
+var http = require('http');
+var fs = require('fs');
 
-/* serves main page */
-app.get("/", function(req, res) {
-  res.sendfile('index.html')
- });
+fs.readFile('index.html', function (err, html) {
+    if (err) {
+        throw err; 
+    } 
 
-var port = Number(process.env.PORT || 5000);
-app.listen(port, function() {
-  console.log("Listening on " + port);
+http.createServer(function (req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.end(html);
+}).listen(80);
+
+console.log('Server running on port 80');
+
 });
